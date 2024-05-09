@@ -101,7 +101,9 @@ module Jekyll
 
       # A drop representing the JSON-LD output
       def json_ld
-        @json_ld ||= JSONLDDrop.new(self)
+        unless page['no_json_ld']
+          @json_ld ||= JSONLDDrop.new(self)
+        end
       end
 
       # Returns a Drop representing the page's image
